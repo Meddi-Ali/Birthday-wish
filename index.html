@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday ❤️</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: linear-gradient(135deg, #ff9a9e, #fad0c4); min-height: 100vh; overflow: hidden; position: relative; }
+.slider { width: 100vw; height: 100vh; overflow: hidden; }
+.slides { display: flex; width: 1400vw; height: 100vh; transition: transform 0.8s ease; }
+.page { width: 100vw; height: 100vh; padding: 18px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+.card { background: #ffffffee; border-radius: 22px; padding: 18px; width: 100%; max-width: 420px; box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
+h1 { color: #e75480; font-size: clamp(1.9rem, 6vw, 2.4rem); margin: 6px 0 8px; }
+p { font-size: 1.05rem; line-height: 1.6; color: #333; }
+.heart { font-size: 42px; animation: beat 1s infinite; color: #e75480; margin: 10px 0 14px; }
+@keyframes beat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
+.portrait { width: 100%; aspect-ratio: 3 / 4; border-radius: 18px; background-size: cover; background-position: center top; margin-bottom: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+.polaroid { background: #fff; padding: 12px 12px 24px; border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); transform: rotate(-2deg); position: relative; overflow: hidden; }
+.polaroid-photo { width: 100%; aspect-ratio: 3 / 4; background-size: cover; background-position: center top; border-radius: 4px; }
+.polaroid-text { margin-top: 10px; font-size: 0.95rem; color: #444; font-family: 'Segoe UI', Tahoma, sans-serif; position: relative; overflow: hidden; }
+.polaroid-text span { opacity: 0; display: inline-block; animation: fadeIn 0.5s forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+button { width: 100%; margin-top: 12px; padding: 14px; border-radius: 30px; border: none; font-size: 1rem; background: #e75480; color: #fff; }
+.dots { position: fixed; bottom: 14px; width: 100%; display: flex; justify-content: center; gap: 8px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #f0a3b8; opacity: .6; }
+.dot.active { opacity: 1; background: #e75480; }
+.confetti { position: absolute; width: 10px; height: 10px; background: #ff5a7f; top: -10px; animation: fall 3s linear infinite; border-radius: 50%; }
+@keyframes fall { 0% {top:-10px;} 100% {top:110%;} }
+.particle { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.8); animation: float 10s linear infinite; }
+@keyframes float { 0% { transform: translateY(0) translateX(0);} 50% { transform: translateY(-50vh) translateX(20px);} 100% { transform: translateY(-100vh) translateX(-10px);} }
+</style>
+</head>
+<body>
+<script>
+for(let i=0;i<40;i++){ let p=document.createElement('div'); p.className='particle'; p.style.left=Math.random()*100+'%'; p.style.top=Math.random()*100+'%'; p.style.animationDuration=(5+Math.random()*7)+'s'; document.body.appendChild(p); }
+</script>
+<div class="slider">
+<div class="slides" id="slides">
+<!-- PAGE 1 -->
+<section class="page"><div class="card"><h1>Happy Birthday Begum Sahiba 🎂</h1><div class="heart">❤️</div><p>Today is all about you — your smile, your kindness, and the love you bring into my life. is br thoray unique tarekay say wish krany ka socha mainay...i hope u like it...</p></div></section>
+<!-- PAGE 2 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('12.JPG')"></div><p>Mohtarma ab apko pta chalay ga zaban chirhanay ka result kiya hai agay agay daikhan hota hai kiya :)</p></div></section>
+<!-- PAGE 3 – Polaroid with animated text -->
+<section class="page"><div class="card"><div class="polaroid"><div class="polaroid-photo" style="background-image:url('3.jpg')"></div><div class="polaroid-text" id="polaroidText"></div></div><p style="margin-top:12px;">han g kaisa lg rha hai phr.....</p></div></section>
+<!-- PAGE 4 – Extra Picture Page 1 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('4.jpg')"></div><p>billiyan billiyan akhan</p></div></section>
+<!-- PAGE 5 – Extra Picture Page 2 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('5.jpg')"></div><p>old is gold❤️</p></div></section>
+<!-- PAGE 6 – Extra Picture Page 3 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('6.jpg')"></div><p>ye zyada purani ho gaye</p></div></section>
+<!-- PAGE 7 – Extra Picture Page 4 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('7.jpg')"></div><p>Artificial ainak wali begum😊</p></div></section>
+<!-- PAGE 8 – Extra Picture Page 5 -->
+<section class="page"><div class="card"><div class="portrait" style="background-image:url('8.jpg')"></div><p>ye wala style b axhaw hai ❤️</p></div></section>
+<!-- PAGE 9 – Original 3rd Page (Confetti & Surprise) now 2nd last -->
+<section class="page" id="surprisePage"><div class="card"><div class="portrait" style="background-image:url('9.jpg')"></div><p>ye style hman pasand aya .</p><button onclick="showLove()">One Last Surprise 💝</button><p id="final" style="display:none; margin-top:10px;">I love you more than words can ever say.</p></div><script>for(let i=0;i<50;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'%';c.style.animationDuration=(2+Math.random()*3)+'s';document.currentScript.parentNode.appendChild(c);}</script></section>
+<!-- PAGE 10 – Animated Heart Page -->
+<section class="page"><div class="card"><h1>Forever & Always ❤️</h1><div class="heart" style="font-size:60px;"></div><p>May your birthday be filled with endless love, laughter, and happiness.</p><div class="heart" style="font-size:50px; animation:beat 0.8s infinite;"></div></div></section>
+</div>
+</div>
+<div class="dots" id="dots"></div>
+<script>
+const slides=document.getElementById('slides');
+const dotsWrap=document.getElementById('dots');
+const total=10;
+let index=0;
+let autoSlide = setInterval(()=>go(index+1),4000);
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d);}
+const dots=dotsWrap.children;
+function go(i){index=(i+total)%total;slides.style.transform=`translateX(-${index*100}vw)`;[...dots].forEach((d,j)=>d.classList.toggle('active',j===index));animatePolaroidText();}
+let startX=0;
+document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(dx<-50)go(index+1);if(dx>50)go(index-1);});
+function showLove(){
+  document.getElementById('final').style.display='block';
+  clearInterval(autoSlide); // Stop auto-slide temporarily
+  setTimeout(()=>{ autoSlide = setInterval(()=>go(index+1),4000); go(index+1); }, 3000); // Resume after 3 sec
+}
+const polaroidMessage="My favorite memory with you ❤️";
+function animatePolaroidText(){const container=document.getElementById('polaroidText');container.innerHTML='';if(index!==2)return;for(let i=0;i<polaroidMessage.length;i++){const span=document.createElement('span');span.textContent=polaroidMessage[i];span.style.animationDelay=(i*0.05)+'s';container.appendChild(span);}}
+</script>
+</body>
+</html>
